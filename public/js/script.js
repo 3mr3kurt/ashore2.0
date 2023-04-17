@@ -3,7 +3,20 @@ document.addEventListener('DOMContentLoaded', () => {
     choiceButtons.forEach((button) => {
       button.addEventListener('click', handleChoice);
     });
+    const nameForm = document.getElementById('nameForm');
+    nameForm.addEventListener('submit', handleNameFormSubmit);
   });
+
+  function handleNameFormSubmit(event) {
+    event.preventDefault();
+    const userName = document.getElementById('userName').value;
+    const gameText = document.getElementById('gameText');
+    gameText.textContent = `The cat says hi, ${userName}!`;
+    const nameFormContainer = document.getElementById('nameFormContainer');
+    nameFormContainer.style.display = 'none';
+    const container = document.querySelector('.container');
+    container.classList.remove('hidden');
+  }
   
   function handleChoice(event) {
     const choice = event.target.dataset.choice;
